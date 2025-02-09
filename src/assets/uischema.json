@@ -3,109 +3,94 @@
   "elements": [
     {
       "type": "Category",
-      "label": "Orders",
+      "label": "Accounts",
       "elements": [
         {
           "type": "ListWithDetail",
-          "scope": "#/properties/orders",
+          "scope": "#/properties/accounts",
           "options": {
-            "labelRef": "#/items/properties/customer/properties/name",
+            "$labelRef": "#/items/properties/account/properties/name",
             "detail": {
               "type": "VerticalLayout",
+              "label": "Account Information",
               "elements": [
                 {
                   "type": "HorizontalLayout",
                   "elements": [
                     {
                       "type": "Control",
-                      "scope": "#/properties/title"
+                      "scope": "#/properties/accountId",
+                      "label": "Account ID"
                     },
                     {
                       "type": "Control",
-                      "scope": "#/properties/processId"
+                      "scope": "#/properties/accountNumber",
+                      "label": "Account Number"
                     }
                   ]
                 },
                 {
-                  "type": "VerticalLayout",
-                  "elements": [
-                    {
-                      "type": "VerticalLayout",
-                      "elements": [
-                        {
-
-                          "type": "Control",
-                          "scope": "#/properties/assignee"
-                        },
-                        {
-                          "type": "HorizontalLayout",
-                          "elements": [
-                            {
-                              "type": "Control",
-                              "scope": "#/properties/startDate"
-                            },
-                            {
-                              "type": "Control",
-                              "scope": "#/properties/endDate"
-                            }
-                          ]
-                        },
-                        {
-                          "type": "Control",
-                          "scope": "#/properties/status"
-                        },
-                        {
-                          "type": "Control",
-                          "scope": "#/properties/ordered",
-                          "options": {
-                            "toggle": true
-                          }
-                        },
-                        {
-                          "type": "Control",
-                          "scope": "#/properties/amount",
-                          "options": {
-                            "slider": true
-                          },
-                          "rule": {
-                            "effect": "DISABLE",
-                            "condition": {
-                              "schema": {
-                                "const": "unordered"
-                              },
-                              "scope": "#/properties/status"
-                            }
-                          }
-                        }
-
-                      ]
-                    }
-                  ]
-                },
-                {
-                  "type": "Group",
-                  "label": "Customer",
+                  "type": "HorizontalLayout",
                   "elements": [
                     {
                       "type": "Control",
-                      "scope": "#/properties/customer/properties/name"
+                      "scope": "#/properties/accountType",
+                      "label": "Account Type"
                     },
                     {
                       "type": "Control",
-                      "scope": "#/properties/customer/properties/department"
-                    },
-                    {
-                      "type": "Control",
-                      "scope": "#/properties/customer/properties/emailAddress"
+                      "scope": "#/properties/taxId",
+                      "label": "Tax ID"
                     }
                   ]
                 },
                 {
-                  "type": "Control",
-                  "scope": "#/properties/description",
-                  "options": {
-                    "multi": true
-                  }
+                  "type": "HorizontalLayout",
+                  "elements": [
+                    {
+                      "type": "Control",
+                      "scope": "#/properties/name",
+                      "label": "Name"
+                    },
+                    {
+                      "type": "Control",
+                      "scope": "#/properties/registrationType",
+                      "label": "Registration Type"
+                    }
+                  ]
+                },
+                {
+                  "type": "HorizontalLayout",
+                  "elements": [
+                    {
+                      "type": "Control",
+                      "scope": "#/properties/openDate",
+                      "label": "Open Date"
+                    },
+                    {
+                      "type": "Control",
+                      "scope": "#/properties/repId",
+                      "$ref": "#/definitions/sponsor/properties/sponsorName",
+                      "label": "Sponsor Name"
+                    }
+                  ]
+                },
+                {
+                  "type": "HorizontalLayout",
+                  "elements": [
+                    {
+                      "type": "Control",
+                      "scope": "#/properties/primaryRole",
+                      "$ref": "#/definitions/participant/properties/taxId",
+                      "label": "Primary Role"
+                    },
+                    {
+                      "type": "Control",
+                      "scope": "#/properties/secondaryRole",
+                      "$ref": "#/definitions/participant/properties/taxId",
+                      "label": "Secondary Role"
+                    }
+                  ]
                 }
               ]
             }
@@ -115,42 +100,119 @@
     },
     {
       "type": "Category",
-      "label": "Data",
+      "label": "Sponsors",
       "elements": [
         {
-          "type": "Label",
-          "text": "Data"
-        },
-        {
-          "type": "Control",
-          "scope": "#/___data"
-        }
-      ]
-    },
-    {
-      "type": "Category",
-      "label": "Language",
-      "elements": [
-        {
-          "type": "Label",
-          "text": "Choose preferred locale"
-        },
-        {
-          "type": "Control",
-          "scope": "#",
+          "type": "ListWithDetail",
+          "scope": "#/properties/sponsors",
           "options": {
-            "lang": true
+            "$labelRef": "#/items/properties/sponsor/properties/sponsorName",
+            "detail": {
+              "type": "VerticalLayout",
+              "label": "Sponsor Information",
+              "elements": [
+                {
+                  "type": "HorizontalLayout",
+                  "elements": [
+                    {
+                      "type": "Control",
+                      "scope": "#/properties/repId",
+                      "label": "Rep ID"
+                    },
+                    {
+                      "type": "Control",
+                      "scope": "#/properties/sponsorId",
+                      "label": "Sponsor ID"
+                    }
+                  ]
+                },
+                {
+                  "type": "HorizontalLayout",
+                  "elements": [
+                    {
+                      "type": "Control",
+                      "scope": "#/properties/sponsorName",
+                      "label": "Sponsor Name"
+                    },
+                    {
+                      "type": "Control",
+                      "scope": "#/properties/address",
+                      "label": "Address"
+                    }
+                  ]
+                },
+                {
+                  "type": "HorizontalLayout",
+                  "elements": [
+                    {
+                      "type": "Control",
+                      "scope": "#/properties/city",
+                      "label": "City"
+                    },
+                    {
+                      "type": "Control",
+                      "scope": "#/properties/state",
+                      "label": "State"
+                    },
+                    {
+                      "type": "Control",
+                      "scope": "#/properties/zip",
+                      "label": "Zip"
+                    }
+                  ]
+                }
+              ]
+            }
           }
         }
       ]
     },
     {
       "type": "Category",
-      "label": "Contracts",
+      "label": "Participants",
       "elements": [
         {
-          "type": "Label",
-          "text": "Currently Empty Category"
+          "type": "ListWithDetail",
+          "scope": "#/properties/participants",
+          "options": {
+            "$labelRef": "#/items/properties/participant/properties/firstNameANDlastName",
+            "detail": {
+              "type": "VerticalLayout",
+              "label": "Participant Information",
+              "elements": [
+                {
+                  "type": "HorizontalLayout",
+                  "elements": [
+                    {
+                      "type": "Control",
+                      "scope": "#/properties/taxId",
+                      "label": "Tax ID"
+                    },
+                    {
+                      "type": "Control",
+                      "scope": "#/properties/participantType",
+                      "label": "Participant Type"
+                    }
+                  ]
+                },
+                {
+                  "type": "HorizontalLayout",
+                  "elements": [
+                    {
+                      "type": "Control",
+                      "scope": "#/properties/firstName",
+                      "label": "First Name"
+                    },
+                    {
+                      "type": "Control",
+                      "scope": "#/properties/lastName",
+                      "label": "Last Name"
+                    }
+                  ]
+                }
+              ]
+            }
+          }
         }
       ]
     }

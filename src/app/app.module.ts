@@ -1,23 +1,22 @@
-import { HttpClientModule } from '@angular/common/http';
-import { NgModule } from '@angular/core';
-import { MatAutocompleteModule } from '@angular/material/autocomplete';
-import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-import { BrowserModule } from '@angular/platform-browser';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { JsonFormsModule } from '@jsonforms/angular';
-import { JsonFormsAngularMaterialModule } from '@jsonforms/angular-material';
-import { AppComponent } from './app.component';
-import { CustomAutocompleteControlRenderer } from './custom.autocomplete';
-import { DataDisplayComponent } from './data.control';
-import { LangComponent } from './lang.control';
-
+import { HttpClientModule } from "@angular/common/http";
+import { NgModule } from "@angular/core";
+import { MatAutocompleteModule } from "@angular/material/autocomplete";
+import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
+import { BrowserModule } from "@angular/platform-browser";
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { JsonFormsModule } from "@jsonforms/angular";
+import { JsonFormsAngularMaterialModule } from "@jsonforms/angular-material";
+import { AppComponent } from "./app.component";
+import { CustomAutocompleteControlRenderer } from "../assets/custom.autocomplete";
+import { DataDisplayComponent } from "../assets/data.control";
+import { LangComponent } from "../assets/lang.control";
 
 @NgModule({
   declarations: [
     AppComponent,
     CustomAutocompleteControlRenderer,
     LangComponent,
-    DataDisplayComponent
+    DataDisplayComponent,
   ],
   imports: [
     BrowserModule,
@@ -26,10 +25,9 @@ import { LangComponent } from './lang.control';
     JsonFormsAngularMaterialModule,
     MatAutocompleteModule,
     MatProgressSpinnerModule,
-    HttpClientModule
+    HttpClientModule,
   ],
   schemas: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule {
-}
+export class AppModule {}

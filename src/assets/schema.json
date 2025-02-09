@@ -1,60 +1,141 @@
 {
   "definitions": {
-    "order": {
+    "account": {
       "type": "object",
       "properties": {
-        "customer": {
-          "type": "object",
-          "properties": {
-            "id": { "type": "string" },
-            "name": { "type": "string"},
-            "department": { "type": "string" },
-            "emailAddress": { "type": "string", "format": "email" }
-          }
-        },
-        "title": {
-          "type": "string",
-          "minLength": 5
-        },
-        "description": {
+        "name": {
           "type": "string"
         },
-        "ordered": { "type": "boolean" },
-        "processId": {
-          "type": "number",
-          "minimum": 0
+        "snapId": {
+          "type": "string"
         },
-        "assignee": { "type": "string" },
-        "startDate": {
+        "accountId": {
+          "type": "string"
+        },
+        "accountNumber": {
+          "type": "string"
+        },
+        "accountType": {
+          "type": "string"
+        },
+        "taxId": {
+          "type": "string"
+        },
+        "registrationType": {
+          "type": "string"
+        },
+        "openDate": {
           "type": "string",
           "format": "date"
         },
-        "endDate": {
+        "sponsorId": {
           "type": "string",
-          "format": "date"
+          "$ref": "#/definitions/sponsor/properties/sponsorId"
         },
-        "status": {
-          "type": "string",
-          "enum": ["unordered", "planned", "ordered"]
-        },
-        "amount": {
+        "primaryRole": {
           "type": "integer",
-          "minimum": 1,
-          "maximum": 100,
-          "default": 10,
-          "multipleOf": 1
+          "$ref": "#/definitions/participant/properties/taxId"
+        },
+        "secondaryRole": {
+          "type": "integer",
+          "$ref": "#/definitions/participant/properties/taxId"
         }
-      }
+      },
+      "required": [
+        "snapId",
+        "accountId",
+        "accountType",
+        "accountNumber",
+        "taxId",
+        "name",
+        "registrationType",
+        "openDate",
+        "primaryRole"
+      ]
+    },
+    "sponsor": {
+      "type": "object",
+      "properties": {
+        "sponsorId": {
+          "type": "string"
+        },
+        "sponsorName": {
+          "type": "string"
+        },
+        "repId": {
+          "type": "string"
+        },
+        "address": {
+          "type": "string"
+        },
+        "city": {
+          "type": "string"
+        },
+        "state": {
+          "type": "string",
+          "maxLength": 2
+        },
+        "zip": {
+          "type": "number"
+        }
+      },
+      "required": [
+        "repId",
+        "sponsorId",
+        "address",
+        "city",
+        "state",
+        "zip"
+      ]
+    },
+    "participant": {
+      "type": "object",
+      "properties": {
+        "taxId": {
+          "type": "number"
+        },
+        "participantType": {
+          "type": "string"
+        },
+        "firstName": {
+          "type": "string"
+        },
+        "lastName": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "taxId",
+        "participantType",
+        "firstName",
+        "lastName"
+      ]
     }
   },
   "type": "object",
   "properties": {
-    "orders": {
+    "accounts": {
       "type": "array",
       "items": {
-        "$ref": "#/definitions/order"
+        "$ref": "#/definitions/account"
+      }
+    },
+    "sponsors": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/sponsor"
+      }
+    },
+    "participants": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/participant"
       }
     }
   },
-  "required": ["title"]
+  "required": [
+    "accounts",
+    "sponsors",
+    "participants"
+  ]
 }
